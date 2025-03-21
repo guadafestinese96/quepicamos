@@ -1,20 +1,31 @@
 import { createContext, ReactNode, useState, useContext } from "react";
-import { ItemComida } from "./types";
+
+interface CartItem{
+    id: number;
+    nombre: string;
+    precio: number;
+    img:string;
+    quantity: number;
+}
 
 interface CartContentType {
-  cart: ItemComida[];
-  addToCart: (item: ItemComida) => void;
+  cart: CartItem[];
+  addToCart: (item: CartItem) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
 }
 
 const CartContext = createContext<CartContentType | undefined>(undefined);
 
-export const CartContextProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<ItemComida[]>([]);
 
-  const addToCart = (item: ItemComida) => {
+export const CartContextProvider = ({ children }: { children: ReactNode }) => {
+  const [cart, setCart] = useState<CartItem[]>([]);
+  console.log(cart)
+
+  const addToCart = (item: CartItem) => {
+  
     setCart((prevCart) => {
+      
       const itemInCart = prevCart.find(
         (itemBuscado) => itemBuscado.id === item.id
       );
@@ -28,7 +39,7 @@ export const CartContextProvider = ({ children }: { children: ReactNode }) => {
       return [...prevCart, { ...item, quantity: 1 }];
       
     });
-    console.log(cart)
+
   };
 
   const removeFromCart = (id: number) => {

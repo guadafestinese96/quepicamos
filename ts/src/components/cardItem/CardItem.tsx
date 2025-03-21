@@ -2,11 +2,12 @@ import './CardItem.css'
 import { useCart } from '../context/CartContex';
 
 
-interface ItemComida {
+export interface ItemComida {
   id: number;
   nombre: string;
   precio: number;
   img: string;
+  quantity: number;
 }
 
 interface CardItemProps {
