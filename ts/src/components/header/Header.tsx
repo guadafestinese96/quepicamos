@@ -8,7 +8,7 @@ export const Header = () => {
     <div className="headerContainer">
         <NavLink to="/">
       <img
-        src="images/QuePicamosLogo.png"
+        src="/images/QuePicamosLogo.png"
         alt="logoHeader"
         className="logoHeader"
       />
@@ -16,7 +16,7 @@ export const Header = () => {
       <NavLink to="/carrito">
         <div className="cartItemContainer">
           <img
-            src="images/shoppingCart.png"
+            src="/images/shoppingCart.png"
             alt="logoCart"
             className="logoCart"
           />
