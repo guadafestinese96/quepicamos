@@ -15,7 +15,8 @@ interface CardItemProps {
 }
 
 export const CardItem = ({ item }: CardItemProps) => {
-const {addToCart} = useCart();
+const {addToCart, cart} = useCart();
+const itemInCart = cart.find(it=>it.id === item.id)
 
   return (
     <div key={item.id} className="itemComidaContainer">
@@ -25,7 +26,7 @@ const {addToCart} = useCart();
       </div>
       <img src={item.img} alt={item.nombre} className="itemComidaImg" />
         <button className="addToCartBtn"
-        onClick={()=>addToCart(item)}>Añadir Al Carrito</button>
+        onClick={()=>addToCart(item)}>{itemInCart? "En Carrito" : "Añadir Al Carrito"}</button>
     </div>
   );
 };
